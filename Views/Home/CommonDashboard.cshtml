@@ -1,0 +1,90 @@
+﻿@model System.Data.DataTable
+
+<h2>Accident Dashboard</h2>
+
+<table class="table table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Accident ID
+            </th>
+            <th>
+                Driver ID
+            </th>
+            <th>
+                Vehicle ID
+            </th>
+            <th>
+                District
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                RDA Validate
+            </th>
+            <th>
+                Police Validate
+            </th>
+            <th>
+                Insurance Validate
+            </th>
+            <th>
+                RDA Validated By
+            </th>
+            <th>
+                Police Validated By
+            </th>
+            <th>
+                <a asp-action="AddOrEdit">Create New</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+        <tr>
+            <td>
+                @Model.Rows[i]["Accident_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["Driver_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["Vehicle_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["District"]
+            </td>
+            <td>
+                @Model.Rows[i]["Date"]
+            </td>
+            <td>
+                @Model.Rows[i]["Time"]
+            </td>
+            <td>
+                @Model.Rows[i]["RDA_Validate"]
+            </td>
+            <td>
+                @Model.Rows[i]["Police_Validate"]
+            </td>
+            <td>
+                @Model.Rows[i]["Insurance_Validate"]
+            </td>
+            <td>
+                @Model.Rows[i]["RDA_Validate_By"]
+            </td>
+            <td>
+                @Model.Rows[i]["Police_Validate_By"]
+            </td>
+            <td>
+                <a asp-action="AddOrEdit" asp-route-id="@Model.Rows[i]["Driver_ID"]">Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model.Rows[i]["Driver_ID"]">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

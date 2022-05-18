@@ -1,0 +1,153 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewData["Title"] = "List of Drivers";
+}
+
+<div class="jumbotron">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+</div>
+
+@*Vehicle List*@
+
+<h2>Vehicles</h2>
+<table class="table table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Vehicle ID
+            </th>
+            <th>
+                Driver ID
+            </th>
+            <th>
+                Insurance ID
+            </th>
+            <th>
+                Vehicle Registration Number
+            </th>
+            <th>
+                Vehicle Type
+            </th>
+            <th>
+                <a asp-action="VehicleAddOrEdit">Create New</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+            {
+        <tr>
+            <td>
+                @Model.Rows[i]["Vehicle_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["Driver_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["Insurance_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["Vehicle_Reg_No"]
+            </td>
+            <td>
+                @Model.Rows[i]["Vehicle_Type"]
+            </td>
+            <td>
+                <a asp-action="VehicleAddOrEdit" asp-route-id="@Model.Rows[i]["Vehicle_ID"]">Edit</a>
+                <a asp-action="VehicleDelete" asp-route-id="@Model.Rows[i]["Vehicle_ID"]">Delete</a>
+            </td>
+        </tr>
+            }
+    </tbody>
+</table>
+
+@*Accidents Add or Edit*@
+<h2>Accidents Reported</h2>
+
+@*<table class="table table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>
+                Accident ID
+            </th>
+            <th>
+                Driver ID
+            </th>
+            <th>
+                Vehicle ID
+            </th>
+            <th>
+                District
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                RDA Validate
+            </th>
+            <th>
+                Police Validate
+            </th>
+            <th>
+                Insurance Validate
+            </th>
+            <th>
+                RDA Validate By
+            </th>
+            <th>
+                Police Validate By
+            </th>
+            <th>
+                <a asp-action="AccidentAddOrEdit">Create New</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Rows.Count; i++)
+        {
+        <tr>
+            <td>
+                @Model.Rows[i]["Accident_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["Driver_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["Vehicle_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["District"]
+            </td>
+            <td>
+                @Model.Rows[i]["Date"]
+            </td>
+            <td>
+                @Model.Rows[i]["Time"]
+            </td>
+            <td>
+                @Model.Rows[i]["RDA Validate"]
+            </td>
+            <td>
+                @Model.Rows[i]["Police Validate"]
+            </td>
+            <td>
+                @Model.Rows[i]["Insurance Validate"]
+            </td>
+            <td>
+                @Model.Rows[i]["RDA Validate By"]
+            </td>
+            <td>
+                @Model.Rows[i]["Police Validate By"]
+            </td>
+            <td>
+                <a asp-action="AccidentAddOrEdit" asp-route-id="@Model.Rows[i]["Accident_ID"]">Edit</a>
+                <a asp-action="AccidentDelete" asp-route-id="@Model.Rows[i]["Accident_ID"]">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>*@

@@ -1,0 +1,51 @@
+﻿@*Report an Accident*@
+
+<div class="col-md-6">
+    <h2>Report an Accident</h2>
+    <form>
+        <!-- Full names -->
+        <div class="form-outline mb-4">
+            <div class="form-outline">
+                <input type="text" id="form3Example1" class="form-control" />
+                <label class="form-label" for="form3Example1">District</label>
+            </div>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="date" id="form3Example2" class="form-control" />
+            <label class="form-label" for="form3Example2">Date</label>
+        </div>
+
+        <!-- License Number input -->
+        <div class="form-outline mb-4">
+            <input type="time" id="form3Example2" class="form-control" />
+            <label class="form-label" for="form3Example2">Time</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="form3Example3" class="form-control" />
+            <label class="form-label" for="form3Example3">RDA Validate</label>
+        </div>
+
+        <!-- Password Confirm -->
+        <div class="form-outline mb-4">
+            <input type="password" id="form3Example4" class="form-control" />
+            <label class="form-label" for="form3Example4">Police Validate</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="password" id="form3Example4" class="form-control" />
+            <label class="form-label" for="form3Example4">Insurance Validate</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Report</button>
+    </form>
+</div>
+
+
+<div class="col-lg-4">
+    <a class="btn btn-primary btn-block" asp-controller="Driver" asp-action="AccidentDelete">Delete Report</a>
+</div>

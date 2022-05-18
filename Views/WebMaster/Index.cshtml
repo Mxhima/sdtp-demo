@@ -1,0 +1,179 @@
+﻿@model System.Data.DataTable
+
+@*Register User*@
+<div class="col-md-6">
+    <h2>Register User</h2>
+    <form>
+        <!-- Full names -->
+        <div class="form-outline mb-4">
+            <div class="form-outline">
+                <input type="text" id="form3Example1" class="form-control" />
+                <label class="form-label" for="form3Example1">Adminstrator Name</label>
+            </div>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="form3Example2" class="form-control" />
+            <label class="form-label" for="form3Example2">Email address</label>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="form3Example2" class="form-control" />
+            <label class="form-label" for="form3Example2">Email address</label>
+        </div>
+
+        <!-- Account Type -->
+        <div class="form-outline mb-4">
+            <label class="visually-hidden" for="inlineFormSelectPref">Account Type</label>
+            <select class="select">
+                <option value="1">Police</option>
+                <option value="2">Insurance</option>
+                <option value="3">RDA</option>
+            </select>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="form3Example3" class="form-control" />
+            <label class="form-label" for="form3Example3">Password</label>
+        </div>
+
+        <!-- Password Confirm -->
+        <div class="form-outline mb-4">
+            <input type="password" id="form3Example4" class="form-control" />
+            <label class="form-label" for="form3Example4">Confirm Password</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+    </form>
+</div>
+
+@*View Users*@
+<div class="col-md-6">
+    <h2>View Users</h2>
+
+    @*<table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        Driver ID
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Password
+                    </th>
+                    <th>
+                        Mobile Number
+                    </th>
+                    <th>
+                        NIC
+                    </th>
+                    <th>
+                        License Number
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Model.Rows[i]["Driver_ID"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["Name"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["Email"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["Password"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["Mobile_Number"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["NIC"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["License_Number"]
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+</div>
+
+@*View Vehicle Details*@
+
+<div class="col-md-6">
+    <h2>Vehicle Details</h2>
+
+    @*<table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        Vehicle ID
+                    </th>
+                    <th>
+                        Vehicle Registration Number
+                    </th>
+                    <th>
+                        Vehicle Type
+                    </th>
+                    <th>
+                        Driver ID
+                    </th>
+                    <th>
+                        Insurance ID
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Rows.Count; i++)
+                {
+                    <tr>
+                        <td>
+                            @Model.Rows[i]["Vehicle_ID"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["Vehicle_Reg_No"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["Vehicle_Type"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["Driver_ID"]
+                        </td>
+                        <td>
+                            @Model.Rows[i]["Insurance_ID"]
+                        </td>
+                        <td> 
+                            <a asp-action="AddOrEdit" asp-route-id="@Model.Rows[i]["Driver_ID"]">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@Model.Rows[i]["Driver_ID"]">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>*@
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            <h2>View Accident Reports</h2>
+        </div>
+
+        <div class="col-lg-4">
+            <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="CommonDashboard">View</a>
+        </div>
+    </div>
+</div>
