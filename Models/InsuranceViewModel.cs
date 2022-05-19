@@ -18,7 +18,6 @@ namespace CodeZen_SDTP.Models
         public string Insurance_Name { get; set; }
         [Required]
         [ForeignKey("Master_ID")]
-        public WebMasterModel Created_Master_ID { get; set; }
-        public ICollection<VehicleViewModel> VehicleID { get; set; }
+        public int Created_Master_ID { get; set; }
     }
 }

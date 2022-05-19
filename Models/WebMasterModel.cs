@@ -16,7 +16,6 @@ namespace CodeZen_SDTP.Models
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
-        public ICollection<PoliceViewModel> PoliceViewModel { get; set; }
-        public ICollection<InsuranceViewModel> InsuranceViewModel { get; set;  }
+        
     }
 }

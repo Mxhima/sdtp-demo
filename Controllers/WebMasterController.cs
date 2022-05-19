@@ -44,9 +44,9 @@ namespace CodeZen_SDTP.Controllers
             using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
             {
                 sqlcon.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter("ProcedureName", sqlcon);
+                SqlDataAdapter cmd = new SqlDataAdapter("WebMasterPolice", sqlcon);
                 DataSet ds = new DataSet();
-                cmd.Fill(ds, "TableName");
+                cmd.Fill(ds, "Police_Account");
 
                 if (ds.Tables[0].Rows.Count != 0)
                 {
@@ -58,7 +58,7 @@ namespace CodeZen_SDTP.Controllers
                             Email = (String)ds.Tables[0].Rows[i]["Email"],
                             District = (String)ds.Tables[0].Rows[i]["District"],
                             City = (String)ds.Tables[0].Rows[i]["City"],
-                            Created_Master_ID = (WebMasterModel)ds.Tables[0].Rows[i]["Created_Master_ID"]
+                            Created_Master_ID = (int)ds.Tables[0].Rows[i]["Created_Master_ID"]
                         });
                     }
                 }
@@ -75,9 +75,9 @@ namespace CodeZen_SDTP.Controllers
             using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
             {
                 sqlcon.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter("ProcedureName", sqlcon);
+                SqlDataAdapter cmd = new SqlDataAdapter("WebMasterRDA", sqlcon);
                 DataSet ds = new DataSet();
-                cmd.Fill(ds, "TableName");
+                cmd.Fill(ds, "RDA_Account");
 
                 if (ds.Tables[0].Rows.Count != 0)
                 {
@@ -85,10 +85,10 @@ namespace CodeZen_SDTP.Controllers
                     {
                         _RDAlist.Add(new RDAViewModel()
                         {
-                            RDA_ID = (int)ds.Tables[0].Rows[i][""],
+                            RDA_ID = (int)ds.Tables[0].Rows[i]["RDA_ID"],
                             Email = (string)ds.Tables[0].Rows[i]["Email"],
                             Branch = (string)ds.Tables[0].Rows[i]["Branch"],
-                            Created_Master_ID = (ICollection<WebMasterModel>)ds.Tables[0].Rows[i]["Created_Master_ID"]
+                            Created_Master_ID = (int)ds.Tables[0].Rows[i]["Created_Master_ID"]
                         });
                     }
                 }
@@ -105,9 +105,9 @@ namespace CodeZen_SDTP.Controllers
             using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
             {
                 sqlcon.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter("ProcedureName", sqlcon);
+                SqlDataAdapter cmd = new SqlDataAdapter("WebMasterInsurance", sqlcon);
                 DataSet ds = new DataSet();
-                cmd.Fill(ds, "TableName");
+                cmd.Fill(ds, "Insurance_Account");
 
                 if (ds.Tables[0].Rows.Count != 0)
                 {
@@ -118,7 +118,7 @@ namespace CodeZen_SDTP.Controllers
                             Insurance_ID = (int)ds.Tables[0].Rows[i]["Insurance_ID"],
                             Email = (string)ds.Tables[0].Rows[i]["Email"],
                             Insurance_Name = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
-                            Created_Master_ID = (WebMasterModel)ds.Tables[0].Rows[i]["Created_Master_ID"]
+                            Created_Master_ID = (int)ds.Tables[0].Rows[i]["Created_Master_ID"]
                         });
                     }
                 }
@@ -135,9 +135,9 @@ namespace CodeZen_SDTP.Controllers
             using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
             {
                 sqlcon.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter("ProcedureName", sqlcon);
+                SqlDataAdapter cmd = new SqlDataAdapter("WebMasterDriver", sqlcon);
                 DataSet ds = new DataSet();
-                cmd.Fill(ds, "TableName");
+                cmd.Fill(ds, "Driver");
 
                 if (ds.Tables[0].Rows.Count != 0)
                 {
@@ -145,12 +145,12 @@ namespace CodeZen_SDTP.Controllers
                     {
                         _drvlist.Add(new DriverViewModel()
                         {
-                            Driver_ID = (DriverViewModel)ds.Tables[0].Rows[i]["Insurance_ID"],
-                            Name = (string)ds.Tables[0].Rows[i]["Email"],
-                            Email = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
-                            Mobile_Number = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
-                            NIC = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
-                            License_Number = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
+                            Driver_ID = (int)ds.Tables[0].Rows[i]["Driver_ID"],
+                            Name = (string)ds.Tables[0].Rows[i]["Name"],
+                            Email = (string)ds.Tables[0].Rows[i]["Email"],
+                            Mobile_Number = (string)ds.Tables[0].Rows[i]["Mobile_Number"],
+                            NIC = (string)ds.Tables[0].Rows[i]["NIC"],
+                            License_Number = (string)ds.Tables[0].Rows[i]["License_Number"],
                         });
                     }
                 }

@@ -22,10 +22,9 @@ namespace CodeZen_SDTP.Models
         [Required(ErrorMessage = "Please Enter Your License Number!")]
         public string License_Number { get; set; }
 
-        public DriverViewModel Driver_ID { get; set; }
-        public DriverViewModel Vehicle_ID { get; set; }
+        public int Driver_ID { get; set; }
+        public int Vehicle_ID { get; set; }
 
-        public InsuranceViewModel Insurance_ID { get; set; }
-        public ICollection<VehicleViewModel> VehicleID { get; set; }
+        public int Insurance_ID { get; set; }
     }
 }

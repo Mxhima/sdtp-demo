@@ -29,12 +29,5 @@ namespace CodeZen_SDTP.Models
         public int Police_Validate { get; set; }
         public int Insurance_Validate { get; set; }
 
-        [Required]
-        [ForeignKey("RDA_ID")]
-        public RDAViewModel RDA_Validate_By { get; set; }
-
-        [Required]
-        [ForeignKey("Police_ID")]
-        public PoliceViewModel Police_Validate_By { get; set; }
     }
 }

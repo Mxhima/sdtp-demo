@@ -17,8 +17,8 @@ namespace CodeZen_SDTP.Models
         public string Vehicle_Type { get; set; }
 
         [ForeignKey("Driver_ID")]
-        public DriverViewModel Driver_ID { get; set; }
+        public int Driver_ID { get; set; }
         [ForeignKey("Insurance_ID")]
-        public InsuranceViewModel Insurance_ID { get; set; }
+        public int Insurance_ID { get; set; }
     }
 }

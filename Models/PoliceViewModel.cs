@@ -22,9 +22,9 @@ namespace CodeZen_SDTP.Models
         
         [Required]
         [ForeignKey("Master_ID")]
-        public WebMasterModel Created_Master_ID { get; set; }
+        public int Created_Master_ID { get; set; }
 
-        public ICollection<AccidentViewModel> Police_Validate_ID { get; set; }
+        
 
     }
 }
