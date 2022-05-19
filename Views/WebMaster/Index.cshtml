@@ -29,26 +29,72 @@
             </div>
         </div>
     </div>
-</div>
 
-@*View Users*@
-<div class="col-md-6">
-    <h2>View Police Accounts</h2>
+    @*View Police Accounts*@
+    <div class="row mt-5">
+        <div>
+            <h2>View Police Accounts</h2>
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>
+                            Police ID
+                        </th>
+                        <th>
+                            Email
+                        </th>
+                        <th>
+                            District
+                        </th>
+                        <th>
+                            City
+                        </th>
+                        <th>
+                            Masterer ID
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model._policeList)
+                    {
+                        <tr>
+                            <td>
+                                @item.Police_ID
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>
+                                @item.District
+                            </td>
+                            <td>
+                                @item.City
+                            </td>
+                            <td>
+                                @item.Created_Master_ID
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <table class="table table-bordered">
+    @*View RDA Accounts*@
+<div class="row mt-5">
+    <div>
+        <h2>View Police Accounts</h2>
+        <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
                     <th>
-                        Police ID
+                        RDA ID
                     </th>
                     <th>
                         Email
                     </th>
                     <th>
-                        District
-                    </th>
-                    <th>
-                        City
+                        Branch
                     </th>
                     <th>
                         Masterer ID
@@ -56,20 +102,17 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model._policeList)
+                @foreach (var item in Model._rdaList)
                 {
                     <tr>
                         <td>
-                            @item.Police_ID
+                            @item.RDA_ID
                         </td>
                         <td>
                             @item.Email
                         </td>
                         <td>
-                            @item.District
-                        </td>
-                        <td>
-                            @item.City
+                            @item.Branch
                         </td>
                         <td>
                             @item.Created_Master_ID
@@ -78,61 +121,110 @@
                 }
             </tbody>
         </table>
+    </div>
 </div>
 
-@*View Vehicle Details*@
-
-<div class="col-md-6">
-    <h2>Vehicle Details</h2>
-
-    @*<table class="table table-bordered">
+    @*View Insurance Accounts*@
+<div class="row mt-5">
+    <div>
+        <h2>View Police Accounts</h2>
+        <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
                     <th>
-                        Vehicle ID
-                    </th>
-                    <th>
-                        Vehicle Registration Number
-                    </th>
-                    <th>
-                        Vehicle Type
-                    </th>
-                    <th>
-                        Driver ID
-                    </th>
-                    <th>
                         Insurance ID
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Insurance Name
+                    </th>
+                    <th>
+                        Masterer ID
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @for (int i = 0; i < Model.Rows.Count; i++)
+                @foreach (var item in Model._insuranceList)
                 {
                     <tr>
                         <td>
-                            @Model.Rows[i]["Vehicle_ID"]
+                            @item.Insurance_ID
                         </td>
                         <td>
-                            @Model.Rows[i]["Vehicle_Reg_No"]
+                            @item.Email
                         </td>
                         <td>
-                            @Model.Rows[i]["Vehicle_Type"]
+                            @item.Insurance_Name
                         </td>
                         <td>
-                            @Model.Rows[i]["Driver_ID"]
-                        </td>
-                        <td>
-                            @Model.Rows[i]["Insurance_ID"]
-                        </td>
-                        <td> 
-                            <a asp-action="AddOrEdit" asp-route-id="@Model.Rows[i]["Driver_ID"]">Edit</a>
-                            <a asp-action="Delete" asp-route-id="@Model.Rows[i]["Driver_ID"]">Delete</a>
+                            @item.Created_Master_ID
                         </td>
                     </tr>
                 }
             </tbody>
-        </table>*@
+        </table>
+    </div>
 </div>
+
+    @*View Driver Accounts*@
+<div class="row mt-5">
+    <div>
+        <h2>View Police Accounts</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        Driver ID
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Mobile No
+                    </th>
+                    <th>
+                        NIC
+                    </th>
+                    <th>
+                        License No
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model._driverList)
+                {
+                    <tr>
+                        <td>
+                            @item.Driver_ID
+                        </td>
+                        <td>
+                            @item.Name
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @item.Mobile_Number
+                        </td>
+                        <td>
+                            @item.NIC
+                        </td>
+                        <td>
+                            @item.License_Number
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
 
 <div class="container">
     <div class="row">
