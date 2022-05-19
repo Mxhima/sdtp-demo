@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "CreatePolice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Police Account</h1>
+
+<div>
+    <form method="post" asp-action="CreatePolice">
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="form3Example2" class="form-control" name="Email" />
+            <label class="form-label" for="form3Example2">Email address</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="form3Example3" class="form-control" name="Pssword"/>
+            <label class="form-label" for="form3Example3">Password</label>
+        </div>
+
+        <!-- District input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="form3Example2" class="form-control" name="District"/>
+            <label class="form-label" for="form3Example2">District</label>
+        </div>
+
+        <!-- City input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="form3Example2" class="form-control" name="City" />
+            <label class="form-label" for="form3Example2">City</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+    </form>
+</div>

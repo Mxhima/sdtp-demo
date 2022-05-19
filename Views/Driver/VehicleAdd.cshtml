@@ -2,14 +2,26 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="VehicleAddOrEdit" method="post">
-            
+        <form asp-action="VehicleAdd" method="post">
+
             @*Vehicle ID*@
             <div class="form-outline mb-4">
                 <div class="form-outline">
                     <input type="text" id="form3Example1" class="form-control" name="Vehicle_RegNo" />
                     <label class="form-label" for="form3Example1">Vehicle Registration Number</label>
                 </div>
+            </div>
+
+
+            @*Vehicl Type*@
+            <div class="form-outline mb-4">
+                <label class="visually-hidden" for="inlineFormSelectPref">Vehicle Type</label>
+                <select class="select" name="VehicleType">
+                    <option value="MotorCycle">Motor Cycle</option>
+                    <option value="3Wheeler">3 Wheeler</option>
+                    <option value="Car">Car</option>
+                    <option value="Van">Van</option>
+                </select>
             </div>
 
             @*Insurance Company*@

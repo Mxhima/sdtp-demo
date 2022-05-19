@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "CreateInsurance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create Insurance Account</h1>
+
+<div>
+    <form asp-action="CreateInsurance" method="post">
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="form3Example2" class="form-control" name="Email"/>
+            <label class="form-label" for="form3Example2">Email address</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="form3Example3" class="form-control" name="Pssword"/>
+            <label class="form-label" for="form3Example3">Password</label>
+        </div>
+
+        <!-- Insurance Name input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="form3Example2" class="form-control" name="InsuranceName"/>
+            <label class="form-label" for="form3Example2">Insurance Name</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+    </form>
+</div>

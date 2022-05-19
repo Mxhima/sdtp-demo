@@ -34,17 +34,22 @@ namespace CodeZen_SDTP.Controllers
 
         public int uid;
 
-        // GET: Driver
+        // GET: DriverVehicles
         public IActionResult Index()
         {
             uid = getUserID();
             DataTable dtbl = new DataTable();
+            DataSet dst = new DataSet();
             using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
             {
                 sqlcon.Open();
-                SqlDataAdapter SqlDA = new SqlDataAdapter("VehicleViewByID", sqlcon);
-                SqlDA.SelectCommand.CommandType = CommandType.StoredProcedure;
-                SqlDA.Fill(dtbl);
+                SqlCommand cmd = new SqlCommand("VehicleViewByID", sqlcon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@User_ID", uid);
+                SqlDataReader sdr = cmd.ExecuteReader();
+                //SqlDataAdapter sqlDA = new SqlDataAdapter(cmd);
+                //sqlDA.Fill(dst);
+                dtbl.Load(sdr);
 
             }
             return View(dtbl);
@@ -60,15 +65,85 @@ namespace CodeZen_SDTP.Controllers
             }
             return View(driverViewModel);
         }
-        
+
+        public IActionResult VehicleAdd()
+        {
+            VehicleViewModel vehicleViewModel = new VehicleViewModel();
+            return View(vehicleViewModel);
+        }
+
+        //POST: Driver/VehicleAdd
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult VehicleAdd(string Vehicle_RegNo, string VehicleType, int InsuranceCompany)
+        {
+            uid = getUserID();
+            using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
+            {
+                sqlcon.Open();
+                SqlCommand cmd = new SqlCommand("VehicleAddOrEdit", sqlcon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Vehicle_Reg_No", Vehicle_RegNo);
+                cmd.Parameters.AddWithValue("@Vehicle_Type", VehicleType);
+                cmd.Parameters.AddWithValue("@Insurance_ID", InsuranceCompany);
+                cmd.Parameters.AddWithValue("@Driver_ID", uid);
+                cmd.ExecuteNonQuery();
+
+            }
+            return RedirectToAction("Index");
+        }
+
+        // GET: Driver/VehicleAddOrEdit
         public IActionResult VehicleAddOrEdit()
         {
-            return View();
+            VehicleViewModel vehicleViewModel = new VehicleViewModel();
+            return View(vehicleViewModel);
+        }
+
+        //POST: Driver/VehicleAddOrEdit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult VehicleAddOrEdit(string Vehicle_RegNo, int InsuranceCompany)
+        {
+            uid = getUserID();
+            DataTable dtbl = new DataTable();
+            DataSet dst = new DataSet();
+            using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
+            {
+                sqlcon.Open();
+                SqlCommand cmd = new SqlCommand("VehicleUpdate", sqlcon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@VehicleRegNo", Vehicle_RegNo);
+                cmd.Parameters.AddWithValue("@InsuranceID", InsuranceCompany);
+                cmd.Parameters.AddWithValue("@DriverID", uid);
+                SqlDataReader sdr = cmd.ExecuteReader();
+                cmd.ExecuteNonQuery();
+
+            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult VehicleDelete()
         {
+
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult VehicleDelete(string Vehicle_RegNo)
+        {
+            uid = getUserID();
+            using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
+            {
+                sqlcon.Open();
+                SqlCommand cmd = new SqlCommand("VehicleDelete", sqlcon);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@VehicleRegNo", Vehicle_RegNo);
+                cmd.Parameters.AddWithValue("@DriverID", uid);
+                cmd.ExecuteNonQuery();
+
+            }
+            return RedirectToAction("Index");
         }
 
         public IActionResult AccidentAddOrEdit()
@@ -125,7 +200,7 @@ namespace CodeZen_SDTP.Controllers
                 sqlcon.Open();
                 SqlCommand sqlcmd = new SqlCommand("DriverDeleteByID", sqlcon);
                 sqlcmd.CommandType = CommandType.StoredProcedure;
-                sqlcmd.Parameters.AddWithValue("Driver_ID", uid);
+                //sqlcmd.Parameters.AddWithValue("Driver_ID", id);
                 sqlcmd.ExecuteNonQuery();
             }
             return RedirectToAction(nameof(Index));

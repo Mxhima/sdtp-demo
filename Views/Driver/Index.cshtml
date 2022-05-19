@@ -30,7 +30,7 @@
                 Vehicle Type
             </th>
             <th>
-                <a asp-action="VehicleAddOrEdit">Create New</a>
+                <a asp-action="VehicleAdd">Create New</a>
             </th>
         </tr>
     </thead>
@@ -54,7 +54,7 @@
                 @Model.Rows[i]["Vehicle_Type"]
             </td>
             <td>
-                <a asp-action="VehicleAddOrEdit" asp-route-id="@Model.Rows[i]["Vehicle_ID"]">Edit</a>
+                @*<a asp-action="VehicleAddOrEdit" asp-route-id="@Model.Rows[i]["Vehicle_ID"]">Edit</a>*@
                 <a asp-action="VehicleDelete" asp-route-id="@Model.Rows[i]["Vehicle_ID"]">Delete</a>
             </td>
         </tr>

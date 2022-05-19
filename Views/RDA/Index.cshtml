@@ -1,28 +1,24 @@
-﻿@model System.Data.DataTable
-
+﻿
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Police Profile</h1>
+<h1>RDA Profile</h1>
 
-<h2>View Police Profiles</h2>
+<h2>View RDA Profiles</h2>
 
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
             <th>
-                Police ID
+                RDA ID
             </th>
             <th>
                 Email
             </th>
             <th>
-                District
-            </th>
-            <th>
-                City
+                Branch
             </th>
         </tr>
     </thead>
@@ -31,23 +27,20 @@
         {
             <tr>
                 <td>
-                    @Model.Rows[i]["Police_ID"]
+                    @Model.Rows[i]["RDA_ID"]
                 </td>
                 <td>
                     @Model.Rows[i]["Email"]
                 </td>
                 <td>
-                    @Model.Rows[i]["District"]
-                </td>
-                <td>
-                    @Model.Rows[i]["City"]
+                    @Model.Rows[i]["Branch"]
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<h2>View Accidents Based on District</h2>
+<h2>View Accidents Based on Districts</h2>
 
 <table class="table table-bordered">
     <thead class="thead-light">
@@ -84,35 +77,37 @@
     <tbody>
         @for (int i = 0; i < Model.Rows.Count; i++)
         {
-        <tr>
-            <td>
-                @Model.Rows[i]["Accident_ID"]
-            </td>
-            <td>
-                @Model.Rows[i]["Driver_ID"]
-            </td>
-            <td>
-                @Model.Rows[i]["Vehicle_ID"]
-            </td>
-            <td>
-                @Model.Rows[i]["District"]
-            </td>
-            <td>
-                @Model.Rows[i]["Date"]
-            </td>
-            <td>
-                @Model.Rows[i]["Time"]
-            </td>
-            <td>
-                @Model.Rows[i]["RDA_Validate"]
-            </td>
-            <td>
-                @Model.Rows[i]["Police_Validate"]
-            </td>
-            <td>
-                @Model.Rows[i]["Insurance_Validate"]
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Model.Rows[i]["Accident_ID"]
+                </td>
+                <td>
+                    @Model.Rows[i]["Driver_ID"]
+                </td>
+                <td>
+                    @Model.Rows[i]["Vehicle_ID"]
+                </td>
+                <td>
+                    @Model.Rows[i]["District"]
+                </td>
+                <td>
+                    @Model.Rows[i]["Date"]
+                </td>
+                <td>
+                    @Model.Rows[i]["Time"]
+                </td>
+                <td>
+                    @Model.Rows[i]["RDA_Validate"]
+                </td>
+                <td>
+                    @Model.Rows[i]["Police_Validate"]
+                </td>
+                <td>
+                    @Model.Rows[i]["Insurance_Validate"]
+                </td>
+            </tr>
         }
     </tbody>
 </table>
+
+
