@@ -1,4 +1,4 @@
-﻿@model System.Data.DataTable
+﻿@model CodeZen_SDTP.Controllers.WebMasterController.ModelCollection
 
 @*Register User*@
 <div class="container">
@@ -33,63 +33,51 @@
 
 @*View Users*@
 <div class="col-md-6">
-    <h2>View Users</h2>
+    <h2>View Police Accounts</h2>
 
-    @*<table class="table table-bordered">
+    <table class="table table-bordered">
             <thead class="thead-light">
                 <tr>
                     <th>
-                        Driver ID
-                    </th>
-                    <th>
-                        Name
+                        Police ID
                     </th>
                     <th>
                         Email
                     </th>
                     <th>
-                        Password
+                        District
                     </th>
                     <th>
-                        Mobile Number
+                        City
                     </th>
                     <th>
-                        NIC
-                    </th>
-                    <th>
-                        License Number
+                        Masterer ID
                     </th>
                 </tr>
             </thead>
             <tbody>
-                @for (int i = 0; i < Model.Rows.Count; i++)
+                @foreach (var item in Model._policeList)
                 {
                     <tr>
                         <td>
-                            @Model.Rows[i]["Driver_ID"]
+                            @item.Police_ID
                         </td>
                         <td>
-                            @Model.Rows[i]["Name"]
+                            @item.Email
                         </td>
                         <td>
-                            @Model.Rows[i]["Email"]
+                            @item.District
                         </td>
                         <td>
-                            @Model.Rows[i]["Password"]
+                            @item.City
                         </td>
                         <td>
-                            @Model.Rows[i]["Mobile_Number"]
-                        </td>
-                        <td>
-                            @Model.Rows[i]["NIC"]
-                        </td>
-                        <td>
-                            @Model.Rows[i]["License_Number"]
+                            @item.Created_Master_ID
                         </td>
                     </tr>
                 }
             </tbody>
-        </table>*@
+        </table>
 </div>
 
 @*View Vehicle Details*@

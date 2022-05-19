@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using CodeZen_SDTP.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
@@ -17,11 +18,146 @@ namespace CodeZen_SDTP.Controllers
         {
             _configuration = configuration;
         }
-        public IActionResult Index()
+
+        public class ModelCollection
         {
-            return View();
+            public IEnumerable<PoliceViewModel> _policeList { get; set; }
+            public IEnumerable<InsuranceViewModel> _insuranceList { get; set; }
+            public IEnumerable<RDAViewModel> _rdaList { get; set; }
+            public IEnumerable<DriverViewModel> _driverList { get; set; }
         }
 
+        public IActionResult Index()
+        {
+            ModelCollection modelCollection = new ModelCollection();
+            modelCollection._policeList = getPoliceList();
+            modelCollection._rdaList = getRDAList();
+            modelCollection._insuranceList = getInsList();
+            modelCollection._driverList = getDrivList();
+            return View(modelCollection);
+        }
+        public List<PoliceViewModel> getPoliceList()
+        {
+            var _Policelist = new List<PoliceViewModel>();
+
+            DataTable dtbl = new DataTable();
+            using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
+            {
+                sqlcon.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter("ProcedureName", sqlcon);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds, "TableName");
+
+                if (ds.Tables[0].Rows.Count != 0)
+                {
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        _Policelist.Add(new PoliceViewModel()
+                        {
+                            Police_ID = (int)ds.Tables[0].Rows[i]["Police_ID"],
+                            Email = (String)ds.Tables[0].Rows[i]["Email"],
+                            District = (String)ds.Tables[0].Rows[i]["District"],
+                            City = (String)ds.Tables[0].Rows[i]["City"],
+                            Created_Master_ID = (WebMasterModel)ds.Tables[0].Rows[i]["Created_Master_ID"]
+                        });
+                    }
+                }
+            }
+
+            return _Policelist;
+        }
+        
+        public List<RDAViewModel> getRDAList()
+        {
+            var _RDAlist = new List<RDAViewModel>();
+
+            DataTable dtbl = new DataTable();
+            using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
+            {
+                sqlcon.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter("ProcedureName", sqlcon);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds, "TableName");
+
+                if (ds.Tables[0].Rows.Count != 0)
+                {
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        _RDAlist.Add(new RDAViewModel()
+                        {
+                            RDA_ID = (int)ds.Tables[0].Rows[i][""],
+                            Email = (string)ds.Tables[0].Rows[i]["Email"],
+                            Branch = (string)ds.Tables[0].Rows[i]["Branch"],
+                            Created_Master_ID = (ICollection<WebMasterModel>)ds.Tables[0].Rows[i]["Created_Master_ID"]
+                        });
+                    }
+                }
+            }
+
+            return _RDAlist;
+        }
+
+        public List<InsuranceViewModel> getInsList()
+        {
+            var _Inslist = new List<InsuranceViewModel>();
+
+            DataTable dtbl = new DataTable();
+            using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
+            {
+                sqlcon.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter("ProcedureName", sqlcon);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds, "TableName");
+
+                if (ds.Tables[0].Rows.Count != 0)
+                {
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        _Inslist.Add(new InsuranceViewModel()
+                        {
+                            Insurance_ID = (int)ds.Tables[0].Rows[i]["Insurance_ID"],
+                            Email = (string)ds.Tables[0].Rows[i]["Email"],
+                            Insurance_Name = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
+                            Created_Master_ID = (WebMasterModel)ds.Tables[0].Rows[i]["Created_Master_ID"]
+                        });
+                    }
+                }
+            }
+
+            return _Inslist;
+        }
+
+        public List<DriverViewModel> getDrivList()
+        {
+            var _drvlist = new List<DriverViewModel>();
+
+            DataTable dtbl = new DataTable();
+            using (SqlConnection sqlcon = new SqlConnection(_configuration.GetConnectionString("DevConnection")))
+            {
+                sqlcon.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter("ProcedureName", sqlcon);
+                DataSet ds = new DataSet();
+                cmd.Fill(ds, "TableName");
+
+                if (ds.Tables[0].Rows.Count != 0)
+                {
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        _drvlist.Add(new DriverViewModel()
+                        {
+                            Driver_ID = (DriverViewModel)ds.Tables[0].Rows[i]["Insurance_ID"],
+                            Name = (string)ds.Tables[0].Rows[i]["Email"],
+                            Email = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
+                            Mobile_Number = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
+                            NIC = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
+                            License_Number = (string)ds.Tables[0].Rows[i]["Insurance_Name"],
+                        });
+                    }
+                }
+            }
+
+            return _drvlist;
+        }
         public IActionResult CreatePolice()
         {
             return View();
